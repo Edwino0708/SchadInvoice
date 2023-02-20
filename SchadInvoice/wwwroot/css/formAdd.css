@@ -1,0 +1,12 @@
+﻿
+.img-btn-add {
+    width: 30px;
+    height: 40px;
+}
+
+.btn-add {
+    padding: 10px;
+    border: 1px solid;
+    box-shadow: 5px 10px #888888;
+    border-radius: 8px;
+}

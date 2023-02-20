@@ -1,0 +1,134 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<SchadInvoice.Models.Dto.InvoiceDto>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *, ReflectionIT.Mvc.Paging
+
+@{
+    ViewData["Title"] = "Lista de Factura";
+}
+<div class="container">
+
+    <div class="d-flex bd-highlight mb-3">
+        <div class="p-2 bd-highlight"><h1 class="text-center">@ViewData["Title"]</h1></div>
+        <div class="ms-auto p-2 bd-highlight">
+            <button class="btn-add" onclick="location.href='@Url.Action("Add", "Invoice")'">
+                <img class="img-btn-add" src="@Url.Content("~/img/plus.png")">
+            </button>
+        </div>
+    </div>
+    <div class="mt-2">
+        <form method="get" class="form-inline">
+            <input name="filter" class="form-control mr-sm-2" type="search" aria-label="Search" placeholder="Busquedad"
+                   value="@Model.RouteValue["Filter"]" />
+            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+            </button>
+        </form>
+
+        <nav aria-label="Suppliers navigation example" class="mt-4">
+            @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model })
+        </nav>
+
+        <table class="table table-striped mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        @Html.SortableHeaderFor(model => model.Id,this.Model)
+                    </th>
+                    <th scope="col">
+                        @Html.SortableHeaderFor(model => model.CustomerName,this.Model)
+                    </th>
+                    <th scope="col">
+                        @Html.SortableHeaderFor(model => model.TotalItbis,this.Model)
+                    </th>
+                    <th scope="col">
+                        @Html.SortableHeaderFor(model => model.SubTotal,this.Model)
+                    </th>
+                    <th scope="col">
+                        @Html.SortableHeaderFor(model => model.Total,this.Model)
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.CustomerName)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.TotalItbis)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.SubTotal)
+                        </td>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td scope="row">
+                            <button class="btn btn-secondary mr-3" onclick="location.href='@Url.Action("Edit", "Invoice", new
+                            {
+                                Id = @item.Id
+                            })'">
+                                <strong>Editar</strong>
+                            </button>
+                            <button class="btn btn-primary mr-3" onclick="location.href='@Url.Action("Detail", "Invoice", new
+                            {
+                                Id = @item.Id
+                            })'">
+                                <strong>Detalle</strong>
+                            </button>
+                            <button class="btn btn-warning" onclick="location.href='@Url.Action("Delete", "Invoice", new
+                            {
+                                Id = @item.Id
+                            })'">
+                                <strong>Eliminar</strong>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <nav aria-label="Suppliers navigation example" class="mt-2">
+            <vc:pager paging-list="@Model" />
+        </nav>
+
+    </div>
+</div>
+
+                            
+@{
+    if (TempData["success"] != null && TempData["message"] != null)
+    {
+        Console.WriteLine(TempData["success"].ToString());
+        if (bool.Parse(TempData["success"].ToString()) == true && !string.IsNullOrEmpty(@TempData["message"].ToString()))
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Exitoso!</h4>
+                <hr>
+                <p>@TempData["message"].ToString()</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(@TempData["message"].ToString()))
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <hr>
+                <p>@TempData["message"].ToString()</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    }
+
+    TempData["success"] = null;
+    TempData["message"] = null;
+}

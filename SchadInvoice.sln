@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchadInvoice", "SchadInvoice\SchadInvoice.csproj", "{1737E92B-EEA4-4A3D-91B7-75BD695E0B41}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0B42D554-771A-4441-BF2F-1B1E1F80F7B3} = {0B42D554-771A-4441-BF2F-1B1E1F80F7B3}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{0B42D554-771A-4441-BF2F-1B1E1F80F7B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1737E92B-EEA4-4A3D-91B7-75BD695E0B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1737E92B-EEA4-4A3D-91B7-75BD695E0B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1737E92B-EEA4-4A3D-91B7-75BD695E0B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1737E92B-EEA4-4A3D-91B7-75BD695E0B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B42D554-771A-4441-BF2F-1B1E1F80F7B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B42D554-771A-4441-BF2F-1B1E1F80F7B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B42D554-771A-4441-BF2F-1B1E1F80F7B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B42D554-771A-4441-BF2F-1B1E1F80F7B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99C020E2-316C-46C2-BD22-4A243F905648}
+	EndGlobalSection
+EndGlobal

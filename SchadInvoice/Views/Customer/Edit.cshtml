@@ -1,0 +1,43 @@
+﻿@model SchadInvoice.Models.Request.CustomerRequest;
+
+<div class="container">
+    <h2 class="text-center">Creación de nuevo cliente</h2>
+    <form method="post" action="@Url.Action("EditEntity", "Customer")" class="mt-4">
+        <div class="mb-3">
+            <label for="CustName" class="form-label">#</label>
+            <input type="text" class="form-control" id="inputCustName" asp-for="@Model.Customer.Id" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="CustName" class="form-label">Nombre Cliente</label>
+            <input type="text" class="form-control" id="inputCustName" asp-for="@Model.Customer.CustName" required>
+        </div>
+        <div class="mb-3">
+            <label for="Adress" class="form-label">Dirreción</label>
+            <input type="text" class="form-control" id="inputAdress" asp-for="@Model.Customer.Adress" required>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Estatus</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" asp-for="@Model.Customer.Status" required>
+                <option selected>Elegir Status...</option>
+                <option value="true">Activo</option>
+                <option value="false">Inactivo</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect02">Tipo de cliente</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect02" asp-for="@Model.Customer.CustomerTypeId">
+                <option selected>Elegir Tipo de cliente...</option>
+                @foreach (var item in Model.CustomerTypes)
+                {
+                    <option value=@item.Id>@item.Id - @item.Description</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+
+</div>

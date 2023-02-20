@@ -1,0 +1,66 @@
+﻿@model SchadInvoice.Models.Request.InvoiceRequest;
+
+<div class="container">
+    <h2 class="text-center">Creación de Factura</h2>
+    <form method="post" action="@Url.Action("AddEntity", "Invoice")" class="mt-4 row g-3">
+        <div class="input-group mb-3 col-md-12">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Nombre de Cliente</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" asp-for="@Model.Invoice.CustomerId">
+                <option selected>Elegir cliente...</option>
+                @foreach (var item in Model.Customers)
+                {
+                    <option value=@item.Id>@item.Id - @item.CustName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="TotalItbis" class="form-label">TotalItbis</label>
+            <div class="input-group">
+                <span class="input-group-text">DOP$</span>
+                <input type="number" class="form-control" id="inputTotalItbis" asp-for="@Model.Invoice.TotalItbis" min="0" required>
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="SubTotal" class="form-label">SubTotal</label>
+            <div class="input-group">
+                <span class="input-group-text">DOP$</span>
+                <input type="number" class="form-control" id="inputSubTotal" asp-for="@Model.Invoice.SubTotal" min="0" required>
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="Total" class="form-label">Total</label>
+            <div class="input-group">
+                <span class="input-group-text">DOP$</span>
+                <input type="number" class="form-control" id="inputTotal" asp-for="@Model.Invoice.Total" min="0" required>
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="mb-1 col-md-12">
+            <h3>Información detalle de factura</h3>
+            <hr class="border border-primary border-3 opacity-75">
+        </div>
+        <div class="mb-3 col-md-6">
+            <label for="inputQty" class="form-label">Qty</label>
+            <div class="input-group">
+                <input type="number" class="form-control" id="inputQty" asp-for="@Model.InvoiceDetail.Qty" min="0" required>
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="mb-3 col-md-6">
+            <label for="inputPrice" class="form-label">Price</label>
+            <div class="input-group">
+                <span class="input-group-text">DOP$</span>
+                <input type="number" class="form-control" id="inputQty" asp-for="@Model.InvoiceDetail.Price" min="0" required>
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="mb-3 col-md-4">
+            <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+        </div>
+    </form>
+
+</div>

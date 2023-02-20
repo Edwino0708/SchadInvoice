@@ -1,0 +1,19 @@
+﻿@model SchadInvoice.Models.Request.CustomerTypeRequest;
+
+
+<div class="container">
+    <h2 class="text-center">Modificación de tipo de cliente</h2>
+
+    <form method="post" action="@Url.Action("EditCustomerType", "CustomerType")">
+        <div class="mb-3">
+            <label for="Id" class="form-label">#</label>
+            <input type="text" class="form-control" id="inputId" asp-for="@Model.Id" readonly>
+        </div>
+        
+        <div class="mb-3">
+            <label for="Description" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="inputDescription" asp-for="@Model.Description">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
+    </form>
+</div>
